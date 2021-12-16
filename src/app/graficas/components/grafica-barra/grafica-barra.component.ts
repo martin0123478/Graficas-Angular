@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective, Color, Label } from 'ng2-charts';
 
@@ -9,33 +9,28 @@ import { BaseChartDirective, Color, Label } from 'ng2-charts';
   ]
 })
 export class GraficaBarraComponent implements OnInit {
+  @Input() horizontal: boolean = false;
   barChartOptions: ChartOptions = {
     responsive: true,
   };
-  barChartLabels: Label[] = ['Apple', 'Banana', 'Kiwifruit', 'Blueberry', 'Orange', 'Grapes'];
+  @Input() barChartLabels: Label[] = [
+    // 'Apple', 'Banana', 'Kiwifruit', 'Blueberry', 'Orange', 'Grapes'
+  ];
   barChartType: ChartType = 'bar';
   barChartLegend = true;
   barChartPlugins = [];
 
-  barChartData: ChartDataSets[] = [
-    { data: [45, 37, 60, 70, 46, 33], label: 'Best Fruits' }
+  @Input() barChartData: ChartDataSets[] = [
+    // { data: [45, 37, 60, 70, 46, 33], label: 'Best Fruits' },
+    // { data: [60, 70, 10, 80, 56, 23], label: 'Best Fruits' }
   ];
 
   constructor() { }
 
   ngOnInit(): void {
+    if(this.horizontal){
+      this.barChartType = 'horizontalBar'
+    }
   }
-  // public randomize(): void {
-  //   // Only Change 3 values
-  //   this.barChartData.datasets[0].data = [
-  //     Math.round(Math.random() * 100),
-  //     59,
-  //     80,
-  //     Math.round(Math.random() * 100),
-  //     56,
-  //     Math.round(Math.random() * 100),
-  //     40 ];
-
-  //   this.chart?.update();
-  // }
+  
 }
