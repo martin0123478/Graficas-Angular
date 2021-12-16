@@ -1,15 +1,11 @@
-<div class="row">
-  <div class="col">
-    <div style="display: block">
-      <canvas baseChart
-      [datasets]="barChartData"
-        [options]="barChartOptions"
-        
-        [chartType]="barChartType">
-      </canvas>
-    </div>
-    
-  </div>
+<div class="chart-wrapper">
+  <canvas baseChart 
+  [datasets]="barChartData"
+  [labels]="barChartLabels"
+  [options]="barChartOptions"
+  [plugins]="barChartPlugins"
+  [legend]="barChartLegend"
+  [chartType]="barChartType">
+</canvas>
 </div>
-
 
